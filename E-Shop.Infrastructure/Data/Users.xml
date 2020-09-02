@@ -1,8 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Users>
-  <User Id="1">
-    <Firstname>fName</Firstname>
-    <Lastname>lName</Lastname>
-    <Username>User</Username>
-  </User>  
+  <User>
+    <Id>1</Id>
+    <Username>Ali</Username>
+  </User>
+  <User>
+    <Id>2</Id>
+    <Username>Ahmed</Username>
+  </User>
 </Users>

@@ -3,29 +3,45 @@
   <Product>
     <Id>1</Id>
     <Name>LG Smart TV 40"</Name>
-    <Image>../../Data/Images/lg.png</Image>
-    <Price>$ 50.00</Price>
+    <Price>50</Price>
+    <InStock>true</InStock>
     <Description>Description Description Description Description Description</Description>
+    <Images>
+      <string>../../Images/Products/tv1.png</string>
+      <string>../../Images/Products/tv2.png</string>
+    </Images>
   </Product>
   <Product>
     <Id>2</Id>
     <Name>LG Smart TV 50"</Name>
-    <Image>../../Data/Images/lg.png</Image>
-    <Price>$ 70.00</Price>
+    <Price>70</Price>
+    <InStock>true</InStock>
     <Description>Description Description Description Description Description</Description>
+    <Images>
+      <string>../../Images/Products/tv1.png</string>
+      <string>../../Images/Products/tv2.png</string>
+    </Images>
   </Product>
   <Product>
     <Id>3</Id>
     <Name>Samsung Smart TV 42"</Name>
-    <Image>../../Data/Images/samsung.png</Image>
-    <Price>$ 50.00</Price>
-    <Description>Description Description Description Description Description</Description>
+    <Price>50</Price>
+    <InStock>true</InStock>
+    <Description>Description Description Description Description Description Description Description Description Description Description Description Description Description Description DescriptionDescription Description Description Description Description</Description>
+    <Images>
+      <string>../../Images/Products/tv1.png</string>
+      <string>../../Images/Products/tv2.png</string>
+    </Images>
   </Product>
   <Product>
     <Id>4</Id>
     <Name>Samsung Smart TV 48"</Name>
-    <Image>../../Data/Images/samsung.png</Image>
-    <Price>$ 56.00</Price>
+    <Price>56</Price>
+    <InStock>false</InStock>
     <Description>Description Description Description Description Description</Description>
+    <Images>
+      <string>../../Images/Products/tv1.png</string>
+      <string>../../Images/Products/tv2.png</string>
+    </Images>
   </Product>
 </Products>

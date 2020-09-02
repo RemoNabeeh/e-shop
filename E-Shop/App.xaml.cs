@@ -1,7 +1,4 @@
-﻿using E_Shop.Account;
-using E_Shop.Cart;
-using E_Shop.Catalog;
-using E_Shop.Views;
+﻿using E_Shop.Views;
 using Prism.DryIoc;
 using Prism.Ioc;
 using Prism.Modularity;
@@ -25,9 +22,7 @@ namespace E_Shop
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
-            moduleCatalog.AddModule<AccountModule>();
-            moduleCatalog.AddModule<CatalogModule>();
-            moduleCatalog.AddModule<CartModule>();
+            moduleCatalog.AddModule<AppModule>();
         }
     }
 }

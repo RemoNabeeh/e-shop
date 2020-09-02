@@ -6,5 +6,6 @@ namespace E_Shop.Core.Interfaces.Services
     {
         User GetUser(int id);
         User GetUser(string username);
+        bool IsUserExists(string username);
     }
 }

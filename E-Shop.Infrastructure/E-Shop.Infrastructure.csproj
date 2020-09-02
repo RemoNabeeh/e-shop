@@ -7,9 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\Images\**" />
+    <EmbeddedResource Remove="Data\Images\**" />
+    <None Remove="Data\Images\**" />
+    <Page Remove="Data\Images\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Data\Carts.xml" />
-    <None Remove="Data\Images\LG.png" />
-    <None Remove="Data\Images\Samsung.png" />
     <None Remove="Data\Products.xml" />
     <None Remove="Data\Users.xml" />
   </ItemGroup>
@@ -17,12 +22,6 @@
   <ItemGroup>
     <Content Include="Data\Carts.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\lg.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\samsung.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\Products.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
