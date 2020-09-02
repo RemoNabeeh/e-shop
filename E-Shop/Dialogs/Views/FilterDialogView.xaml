@@ -8,6 +8,22 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <Style TargetType="Button" x:Key="BtnApplyFilter" BasedOn="{StaticResource btn-primary}">
+            <Setter Property="Content" Value="Apply Filter" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Width" Value="80" />
+        </Style>
+
+        <Style TargetType="Button" x:Key="BtnCancel" BasedOn="{StaticResource btn-secondary}">
+            <Setter Property="Content" Value="Cancel" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Width" Value="80" />
+            <Setter Property="Margin" Value="0 0 10 0" />
+        </Style>
+
+    </UserControl.Resources>
     
     <prism:Dialog.WindowStyle>
         <Style TargetType="Window">
@@ -29,15 +45,21 @@
                 <TextBlock DockPanel.Dock="Left"  Text="Min Price" />
                 <TextBlock DockPanel.Dock="Right" Text="{Binding MinValue, StringFormat={}{0:c}}" />
             </DockPanel>
-            <Slider Minimum="0" Maximum="100" Value="{Binding MinValue}" />
+            <Slider Minimum="{StaticResource FilterMinValue}" Maximum="{StaticResource FilterMaxValue}" Value="{Binding MinValue}" />
         </StackPanel>
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="1">
             <DockPanel HorizontalAlignment="Stretch" LastChildFill="False">
                 <TextBlock DockPanel.Dock="Left" Text="Max Price" />
                 <TextBlock DockPanel.Dock="Right" Text="{Binding MaxValue, StringFormat={}{0:c}}" />
             </DockPanel>
-            <Slider Minimum="0" Maximum="100" Value="{Binding MaxValue}" />
+            <Slider Minimum="{StaticResource FilterMinValue}" Maximum="{StaticResource FilterMaxValue}" Value="{Binding MaxValue}" />
         </StackPanel>
-        <Button Grid.Row="3" Content="Apply Filter" Command="{Binding ApplyFilterCommand}" Height="50" Style="{StaticResource btn-primary}"/>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Style="{StaticResource BtnCancel}"
+                    Command="{Binding CloseDialogCommand}" CommandParameter="Cancel"/>
+            <Button Style="{StaticResource BtnApplyFilter}"
+                    Command="{Binding CloseDialogCommand}" CommandParameter="Filter"/>
+        </StackPanel>
+        
     </Grid>
 </UserControl>

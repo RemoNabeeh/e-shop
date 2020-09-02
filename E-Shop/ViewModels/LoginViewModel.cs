@@ -61,14 +61,14 @@ namespace E_Shop.ViewModels
         {
             if (!ValidateUsername())
             {
-                ShowDialog(_messagesResourceService.GetMessage(Constants.InvalidUsername));
+                ShowDialog(_messagesResourceService.GetString(Constants.InvalidUsername));
             }
             else
             {
                 var isExist = _userService.IsUserExists(Username);
                 if (!isExist)
                 {
-                    ShowDialog(_messagesResourceService.GetMessage(Constants.UserNotFound));
+                    ShowDialog(_messagesResourceService.GetString(Constants.UserNotFound));
                 }
                 else
                 {

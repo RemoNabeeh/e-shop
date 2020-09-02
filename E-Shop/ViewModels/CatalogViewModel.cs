@@ -1,5 +1,6 @@
 ﻿using E_Shop.Core.Entities;
 using E_Shop.Core.Interfaces.Services;
+using E_Shop.Core.Models;
 using E_Shop.Enums;
 using E_Shop.Events;
 using E_Shop.Helpers;
@@ -10,6 +11,7 @@ using Prism.Mvvm;
 using Prism.Regions;
 using Prism.Services.Dialogs;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace E_Shop.ViewModels
 {
@@ -34,6 +36,13 @@ namespace E_Shop.ViewModels
         {
             get { return _products; }
             set { SetProperty(ref _products, value); }
+        }
+
+        private bool _noProductsFound;
+        public bool NoProductsFound
+        {
+            get { return _noProductsFound; }
+            set { SetProperty(ref _noProductsFound, value); }
         }
 
         #endregion
@@ -76,12 +85,12 @@ namespace E_Shop.ViewModels
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            _eventAggregator.GetEvent<ShowFilterMenuItemEvent>().Publish(true);
-
             if (navigationContext.Parameters.ContainsKey(Constants.Username))
                 Username = navigationContext.Parameters.GetValue<string>(Constants.Username);
 
             LoadProducts();
+
+            HandleEvents();
         }
 
         #endregion
@@ -91,6 +100,7 @@ namespace E_Shop.ViewModels
         private void LoadProducts()
         {
             Products = new ObservableCollection<Product>(_productService.GetAll(e => true));
+            CheckProductsAvailability();
         }
 
         private void NavigateToProduct(Product product)
@@ -105,6 +115,26 @@ namespace E_Shop.ViewModels
             };
 
             _regionManager.RequestNavigate(RegionNames.ContentRegion.ToString(), nameof(CatalogItemView), param);
+        }
+
+        private void HandleEvents()
+        {
+            _eventAggregator.GetEvent<ShowFilterMenuItemEvent>().Publish(true);
+
+            _eventAggregator.GetEvent<ApplyFilterEvent>().Subscribe(ApplyFilter);
+        }
+
+        private void ApplyFilter(ApplyFilterModel model)
+        {
+            var products = _productService.GetAll(e => e.Price >= model.MinValue && e.Price <= model.MaxValue);
+            Products = new ObservableCollection<Product>(products);
+
+            CheckProductsAvailability();
+        }
+
+        private void CheckProductsAvailability()
+        {
+            NoProductsFound = !Products.Any();
         }
 
         #endregion

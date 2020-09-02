@@ -14,11 +14,22 @@ namespace E_Shop.Helpers
         public const string CartUpdated = "CartUpdated";
         public const string OrderSubmitted = "OrderSubmitted";
 
+
         #region [Parameters]
+
+        public const string HomeMenuItem = "Home";
+        public const string FilterMenuItem = "Filter";
+        public const string LogoutMenuItem = "Logout";
+        public const string CartNavigation = "Cart";
 
         public const string Username = "username";
         public const string Message = "message";
         public const string Product = "product";
+        public const string FilterMinValue = "minValue";
+        public const string FilterMaxnValue = "maxValue";
+
+        public const string FilterDialogButton = "Filter";
+        public const string CancelDialogButton = "Cancel";
 
         #endregion
     }

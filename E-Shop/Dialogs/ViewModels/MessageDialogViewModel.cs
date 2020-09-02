@@ -1,4 +1,6 @@
-﻿using Prism.Commands;
+﻿using E_Shop.Core.Interfaces.Services;
+using E_Shop.Helpers;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
 using System;
@@ -7,12 +9,13 @@ namespace E_Shop.Dialogs.ViewModels
 {
     public class MessageDialogViewModel : BindableBase, IDialogAware
     {
-        private string _message;
+        private readonly IStringsResourceService _stringsResourceService;
 
-        public string Title => "Login";
+        public string Title => _stringsResourceService.GetString(Constants.LoginDialogTitle);
 
         public event Action<IDialogResult> RequestClose;
 
+        private string _message;
         public string Message
         {
             get { return _message; }
@@ -22,8 +25,10 @@ namespace E_Shop.Dialogs.ViewModels
 
         public DelegateCommand CloseDialogCommand { get; private set; }
         
-        public MessageDialogViewModel()
+        public MessageDialogViewModel(IStringsResourceService stringsResourceService)
         {
+            _stringsResourceService = stringsResourceService;
+
             CloseDialogCommand = new DelegateCommand(OnDialogClosed);
         }
 

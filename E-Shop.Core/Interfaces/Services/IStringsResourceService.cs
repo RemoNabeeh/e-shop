@@ -2,6 +2,6 @@
 {
     public interface IStringsResourceService
     {
-        string GetMessage(string key);
+        string GetString(string key);
     }
 }

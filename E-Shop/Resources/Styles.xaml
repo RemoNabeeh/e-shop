@@ -23,7 +23,7 @@
     <Style TargetType="TextBlock" x:Key="username">
         <Setter Property="FontSize" Value="16" />
         <Setter Property="FontWeight" Value="Medium" />
-        <Setter Property="Foreground" Value="Brown" />
+        <Setter Property="Foreground" Value="#FF5162CD" />
     </Style>
 
     <Style TargetType="UserControl" x:Key="login-view">
@@ -34,9 +34,21 @@
         <Setter Property="Background" Value="#FF00D1FF" />
     </Style>
 
+    <Style TargetType="Button" x:Key="btn-secondary">
+        <Setter Property="Background" Value="#FFB0B9B8" />
+    </Style>
+
     <Style TargetType="TextBlock" x:Key="link">
         <Setter Property="Foreground" Value="Blue"/>
         <Setter Property="TextDecorations" Value="Underline"/>
         <Setter Property="Cursor" Value="Hand"/>
     </Style>
+
+    <Style TargetType="TextBlock" x:Key="EmptyMessage">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="25" />
+        <Setter Property="FontWeight" Value="Medium" />
+    </Style>
+    
 </ResourceDictionary>

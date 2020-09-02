@@ -25,7 +25,7 @@
             <Button Grid.Column="1" 
                     Width="50" 
                     HorizontalAlignment="Right" Margin="0 0 10 0"
-                    Command="{Binding NavigateToCommand}" CommandParameter="Cart">
+                    Command="{Binding NavigateToCommand}" CommandParameter="{StaticResource CartNavigation}">
                 <Button.Template>
                     <ControlTemplate>
                         <Canvas>
@@ -45,10 +45,10 @@
                     <MenuItem.Icon>
                         <Image Source="/Images/menu.png" />
                     </MenuItem.Icon>
-                    <MenuItem Header="Home" Command="{Binding NavigateToCommand}" CommandParameter="Home" />
-                    <MenuItem Header="Filter" Command="{Binding NavigateToCommand}" CommandParameter="Filter" Visibility="{Binding ShowFilterMenuItem, Converter={StaticResource BoolToVisConverter}}" />
+                    <MenuItem Header="{StaticResource HomeMenuItem}" Command="{Binding NavigateToCommand}" CommandParameter="{StaticResource HomeMenuItem}" />
+                    <MenuItem Header="{StaticResource FilterMenuItem}" Command="{Binding NavigateToCommand}" CommandParameter="{StaticResource FilterMenuItem}" Visibility="{Binding ShowFilterMenuItem, Converter={StaticResource BoolToVisConverter}}" />
                     <Separator />
-                    <MenuItem Header="Logout" Command="{Binding NavigateToCommand}" CommandParameter="Logout" />
+                    <MenuItem Header="{StaticResource LoginDialogTitle}" Command="{Binding NavigateToCommand}" CommandParameter="{StaticResource LogoutMenuItem}" />
                 </MenuItem>
             </Menu>
         </Grid>

@@ -14,4 +14,16 @@
     <system:String x:Key="UserNotFound">User Not Found</system:String>
     <system:String x:Key="InvalidUsername" xml:space="preserve">Invalid username.&#13;Username must not contain spaces or special characters</system:String>
     <system:String x:Key="CartIsEmpty">Cart Is Empty</system:String>
+
+    <system:String x:Key="HomeMenuItem">Home</system:String>
+    <system:String x:Key="FilterMenuItem">Filter</system:String>
+    <system:String x:Key="LogoutMenuItem">Logout</system:String>
+
+    <system:String x:Key="CartNavigation">Cart</system:String>
+
+    <system:Double x:Key="FilterMinValue">0</system:Double>
+    <system:Double x:Key="FilterMaxValue">100</system:Double>
+
+    <system:String x:Key="NoProductsFoundMessage">No Products Found</system:String>
+
 </ResourceDictionary>

@@ -142,7 +142,7 @@ namespace E_Shop.ViewModels
 
             var dialogParams = new DialogParameters
             {
-                { Constants.Message,  _stringsResourceService.GetMessage(Constants.CartUpdated) }
+                { Constants.Message,  _stringsResourceService.GetString(Constants.CartUpdated) }
             };
 
             _dialogService.ShowDialog(nameof(MessageDialogView), dialogParams, (res) => { });

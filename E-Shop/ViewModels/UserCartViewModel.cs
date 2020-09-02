@@ -145,7 +145,7 @@ namespace E_Shop.ViewModels
 
             var dialogParams = new DialogParameters
             {
-                { Helpers.Constants.Message, _stringsResourceService.GetMessage(Helpers.Constants.OrderSubmitted) }
+                { Helpers.Constants.Message, _stringsResourceService.GetString(Helpers.Constants.OrderSubmitted) }
             };
 
             _dialogService.ShowDialog(nameof(MessageDialogView), dialogParams, (res) => { });
