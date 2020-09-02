@@ -19,7 +19,10 @@
     <None Remove="Images\menu.jpg" />
     <None Remove="Images\menu.png" />
     <None Remove="Images\Products\TV1.png" />
+    <None Remove="Images\Products\tv2.jpg" />
     <None Remove="Images\Products\TV2.png" />
+    <None Remove="Images\Products\tv3.jpg" />
+    <None Remove="Images\Products\tv4.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,7 +40,13 @@
     <Content Include="Images\Products\tv1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\Products\tv2.png">
+    <Content Include="Images\Products\tv2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Products\tv3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Products\tv4.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

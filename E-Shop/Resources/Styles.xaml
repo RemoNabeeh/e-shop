@@ -30,11 +30,11 @@
         <Setter Property="Background" Value="AliceBlue" />
     </Style>
 
-    <Style TargetType="Button" x:Key="btn-primary">
+    <Style TargetType="Button" x:Key="BtnPrimary">
         <Setter Property="Background" Value="#FF00D1FF" />
     </Style>
 
-    <Style TargetType="Button" x:Key="btn-secondary">
+    <Style TargetType="Button" x:Key="BtnSecondary">
         <Setter Property="Background" Value="#FFB0B9B8" />
     </Style>
 

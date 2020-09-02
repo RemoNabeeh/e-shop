@@ -12,6 +12,7 @@ using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
 using Prism.Services.Dialogs;
+using System.Linq;
 
 namespace E_Shop.ViewModels
 {
@@ -48,10 +49,25 @@ namespace E_Shop.ViewModels
             set { SetProperty(ref _quantity, value); }
         }
 
+        private string _selectedImageUrl = "";
+        public string SelectedImageUrl
+        {
+            get { return _selectedImageUrl; }
+            set { SetProperty(ref _selectedImageUrl, value); }
+        }
+
+        private int _selecteImageIndex;
+        public int SelectedImageIndex
+        {
+            get { return _selecteImageIndex; }
+            set { SetProperty(ref _selecteImageIndex, value); }
+        }
+
         #endregion
 
         #region [Commands]
 
+        public DelegateCommand<string> ChangeImageCommand { get; set; }
         public DelegateCommand<string> UpdateQuantityCommand { get; private set; }
         public DelegateCommand AddToCartCommand { get; set; }
 
@@ -69,6 +85,8 @@ namespace E_Shop.ViewModels
             _dialogService = dialogService;
             _stringsResourceService = stringsResourceService;
 
+
+            ChangeImageCommand = new DelegateCommand<string>(ChangeImage);
             UpdateQuantityCommand = new DelegateCommand<string>(UpdateQuantity);
             AddToCartCommand = new DelegateCommand(AddToCart);
         }
@@ -100,11 +118,33 @@ namespace E_Shop.ViewModels
             {
                 UserId = _userService.GetUser(navigationContext.Parameters.GetValue<string>(Constants.Username).ToString()).Id;
             }
+
+            SelectedImageUrl = SelectedProduct.Images.FirstOrDefault();
         }
 
         #endregion
 
         #region [Methods]
+
+        private void ChangeImage(string direction)
+        {
+            switch (direction)
+            {
+                case Constants.Next:
+                    if (SelectedImageIndex < SelectedProduct.Images.Count - 1)
+                    {
+                        SelectedImageIndex++;
+                    }
+                    break;
+                case Constants.Previous:
+                    if (SelectedImageIndex > 0)
+                    {
+                        SelectedImageIndex--;
+                    }
+                    break;
+            }
+            SelectedImageUrl = SelectedProduct.Images[SelectedImageIndex];
+        }
 
         private void UpdateQuantity(string operation)
         {

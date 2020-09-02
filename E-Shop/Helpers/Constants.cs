@@ -14,6 +14,9 @@ namespace E_Shop.Helpers
         public const string CartUpdated = "CartUpdated";
         public const string OrderSubmitted = "OrderSubmitted";
 
+        public const string Previous = "Previous";
+        public const string Next = "Next";
+
 
         #region [Parameters]
 

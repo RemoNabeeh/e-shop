@@ -8,7 +8,9 @@
     <Description>Description Description Description Description Description</Description>
     <Images>
       <string>../../Images/Products/tv1.png</string>
-      <string>../../Images/Products/tv2.png</string>
+      <string>../../Images/Products/tv2.jpg</string>
+      <string>../../Images/Products/tv3.jpg</string>
+      <string>../../Images/Products/tv4.jpg</string>
     </Images>
   </Product>
   <Product>
@@ -19,7 +21,9 @@
     <Description>Description Description Description Description Description</Description>
     <Images>
       <string>../../Images/Products/tv1.png</string>
-      <string>../../Images/Products/tv2.png</string>
+      <string>../../Images/Products/tv2.jpg</string>
+      <string>../../Images/Products/tv3.jpg</string>
+      <string>../../Images/Products/tv4.jpg</string>
     </Images>
   </Product>
   <Product>
@@ -30,7 +34,9 @@
     <Description>Description Description Description Description Description Description Description Description Description Description Description Description Description Description DescriptionDescription Description Description Description Description</Description>
     <Images>
       <string>../../Images/Products/tv1.png</string>
-      <string>../../Images/Products/tv2.png</string>
+      <string>../../Images/Products/tv2.jpg</string>
+      <string>../../Images/Products/tv3.jpg</string>
+      <string>../../Images/Products/tv4.jpg</string>
     </Images>
   </Product>
   <Product>
@@ -41,7 +47,9 @@
     <Description>Description Description Description Description Description</Description>
     <Images>
       <string>../../Images/Products/tv1.png</string>
-      <string>../../Images/Products/tv2.png</string>
+      <string>../../Images/Products/tv2.jpg</string>
+      <string>../../Images/Products/tv3.jpg</string>
+      <string>../../Images/Products/tv4.jpg</string>
     </Images>
   </Product>
 </Products>

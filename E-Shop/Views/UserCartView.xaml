@@ -8,10 +8,10 @@
              xmlns:prism="http://prismlibrary.com/" 
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="600" d:DesignWidth="800">
 
     <UserControl.Resources>
-        <Style TargetType="Button" x:Key="BtnSubmit" BasedOn="{StaticResource btn-primary}">
+        <Style TargetType="Button" x:Key="BtnSubmit" BasedOn="{StaticResource BtnPrimary}">
             <Setter Property="Margin" Value="0 20 0 0" />
             <Setter Property="Width" Value="150" />
         </Style>
