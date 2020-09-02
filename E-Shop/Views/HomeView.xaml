@@ -8,6 +8,7 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    
     <Grid>
         <Grid.RowDefinitions>
                 <RowDefinition Height="35" />
@@ -20,15 +21,22 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="50" />
             </Grid.ColumnDefinitions>
-
             <TextBlock Margin="20 10 10 10" Text="{Binding Username}" VerticalAlignment="Center" Style="{StaticResource username}" />
-            <Button Grid.Column="1" RenderTransformOrigin="0.283,0.413" 
-                Height="25" Width="25" HorizontalAlignment="Right" Margin="0 0 10 0"
-                Command="{Binding NavigateToCommand}" CommandParameter="Cart">
-                <Grid >
-                    <Image Source="/Images/cart.png" MaxHeight="30"/>
-                    <Label Content="{Binding CartItemsCount}" />
-                </Grid>
+            <Button Grid.Column="1" 
+                    Width="50" 
+                    HorizontalAlignment="Right" Margin="0 0 10 0"
+                    Command="{Binding NavigateToCommand}" CommandParameter="Cart">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Canvas>
+                            <Image Source="/Images/cart.png" MaxHeight="30"/>
+                            <TextBlock Canvas.Left="30" Canvas.Top="-5" 
+                                       FontSize="20" Foreground="Brown" FontWeight="Bold"
+                                       Text="{Binding CartItemsCount}"
+                                       Visibility="{Binding CartItemsCount, Converter={StaticResource IntToVisConverter}}" />
+                        </Canvas>
+                    </ControlTemplate>
+                </Button.Template>
             </Button>
             <Menu Grid.Column="2" 
               Margin="0 0 20 0"
@@ -38,7 +46,8 @@
                         <Image Source="/Images/menu.png" />
                     </MenuItem.Icon>
                     <MenuItem Header="Home" Command="{Binding NavigateToCommand}" CommandParameter="Home" />
-                    <MenuItem Header="Filter" Command="{Binding NavigateToCommand}" CommandParameter="Filter" />
+                    <MenuItem Header="Filter" Command="{Binding NavigateToCommand}" CommandParameter="Filter" Visibility="{Binding ShowFilterMenuItem, Converter={StaticResource BoolToVisConverter}}" />
+                    <Separator />
                     <MenuItem Header="Logout" Command="{Binding NavigateToCommand}" CommandParameter="Logout" />
                 </MenuItem>
             </Menu>

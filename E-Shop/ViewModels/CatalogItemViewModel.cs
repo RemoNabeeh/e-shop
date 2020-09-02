@@ -1,8 +1,17 @@
 ﻿using E_Shop.Core.Entities;
+using E_Shop.Core.Enums;
 using E_Shop.Core.Interfaces.Services;
+using E_Shop.Core.Models;
+using E_Shop.Dialogs.Views;
+using E_Shop.Enums;
+using E_Shop.Events;
+using E_Shop.Helpers;
+using E_Shop.Views;
 using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
+using Prism.Services.Dialogs;
 
 namespace E_Shop.ViewModels
 {
@@ -10,9 +19,13 @@ namespace E_Shop.ViewModels
     {
         #region [Properties]
 
+        private readonly IDialogService _dialogService;
+        private readonly IEventAggregator _eventAggregator;
         private readonly IRegionManager _regionManager;
         private readonly IUserService _userService;
         private readonly ICartService _cartService;
+        private readonly IStringsResourceService _stringsResourceService;
+
 
         private int _userId;
         public int UserId
@@ -46,11 +59,15 @@ namespace E_Shop.ViewModels
 
         #region [Ctor]
 
-        public CatalogItemViewModel(IRegionManager regionManager, IUserService userService, ICartService cartService)
+        public CatalogItemViewModel(IRegionManager regionManager, IUserService userService, ICartService cartService, 
+            IEventAggregator eventAggregator, IDialogService dialogService, IStringsResourceService stringsResourceService)
         {
+            _eventAggregator = eventAggregator;
             _regionManager = regionManager;
             _userService = userService;
             _cartService = cartService;
+            _dialogService = dialogService;
+            _stringsResourceService = stringsResourceService;
 
             UpdateQuantityCommand = new DelegateCommand<string>(UpdateQuantity);
             AddToCartCommand = new DelegateCommand(AddToCart);
@@ -72,12 +89,16 @@ namespace E_Shop.ViewModels
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            if (navigationContext.Parameters.ContainsKey("product"))
-                SelectedProduct = navigationContext.Parameters.GetValue<Product>("product");
+            _eventAggregator.GetEvent<ShowFilterMenuItemEvent>().Publish(false);
 
-            if (navigationContext.Parameters.ContainsKey("username"))
+            if (navigationContext.Parameters.ContainsKey(Constants.Product))
             {
-                UserId = _userService.GetUser(navigationContext.Parameters.GetValue<string>("username").ToString()).Id;
+                SelectedProduct = navigationContext.Parameters.GetValue<Product>(Constants.Product);
+            }
+
+            if (navigationContext.Parameters.ContainsKey(Constants.Username))
+            {
+                UserId = _userService.GetUser(navigationContext.Parameters.GetValue<string>(Constants.Username).ToString()).Id;
             }
         }
 
@@ -107,6 +128,24 @@ namespace E_Shop.ViewModels
                 ProductId = SelectedProduct.Id,
                 Quantity = Quantity  
             });
+
+            var eventPayload = new CartItemEventModel
+            {
+                Product = SelectedProduct,
+                Quantity = Quantity,
+                Action = CartAction.Add
+            };
+
+            _eventAggregator.GetEvent<UpdateUserCartEvent>().Publish(eventPayload);
+
+            _regionManager.RequestNavigate(RegionNames.ContentRegion.ToString(), nameof(CatalogView));
+
+            var dialogParams = new DialogParameters
+            {
+                { Constants.Message,  _stringsResourceService.GetMessage(Constants.CartUpdated) }
+            };
+
+            _dialogService.ShowDialog(nameof(MessageDialogView), dialogParams, (res) => { });
         }
 
         #endregion

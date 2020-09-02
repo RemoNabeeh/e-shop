@@ -54,7 +54,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Dialogs\MessageDialogView.xaml.cs">
+    <Compile Update="Dialogs\Views\MessageDialogView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\LoginView.xaml.cs">
@@ -63,7 +63,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Dialogs\MessageDialogView.xaml">
+    <Page Update="Dialogs\Views\MessageDialogView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\LoginView.xaml">

@@ -1,5 +1,4 @@
-﻿using E_Shop.Core.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace E_Shop.Core.Interfaces.Repositories
 {

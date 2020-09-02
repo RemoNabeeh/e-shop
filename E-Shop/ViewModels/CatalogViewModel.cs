@@ -1,6 +1,8 @@
 ﻿using E_Shop.Core.Entities;
 using E_Shop.Core.Interfaces.Services;
 using E_Shop.Enums;
+using E_Shop.Events;
+using E_Shop.Helpers;
 using E_Shop.Views;
 using Prism.Commands;
 using Prism.Events;
@@ -74,8 +76,10 @@ namespace E_Shop.ViewModels
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            if (navigationContext.Parameters.ContainsKey("username"))
-                Username = navigationContext.Parameters.GetValue<string>("username");
+            _eventAggregator.GetEvent<ShowFilterMenuItemEvent>().Publish(true);
+
+            if (navigationContext.Parameters.ContainsKey(Constants.Username))
+                Username = navigationContext.Parameters.GetValue<string>(Constants.Username);
 
             LoadProducts();
         }
@@ -96,8 +100,8 @@ namespace E_Shop.ViewModels
 
             var param = new NavigationParameters
             {
-                { "username", Username},
-                { "product", product }
+                { Constants.Username, Username},
+                { Constants.Product, product }
             };
 
             _regionManager.RequestNavigate(RegionNames.ContentRegion.ToString(), nameof(CatalogItemView), param);

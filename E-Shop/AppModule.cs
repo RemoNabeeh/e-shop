@@ -1,7 +1,8 @@
 ﻿using E_Shop.Business;
 using E_Shop.Core.Interfaces.Repositories;
 using E_Shop.Core.Interfaces.Services;
-using E_Shop.Dialogs;
+using E_Shop.Dialogs.ViewModels;
+using E_Shop.Dialogs.Views;
 using E_Shop.Enums;
 using E_Shop.Infrastructure.Repositories;
 using E_Shop.ViewModels;
@@ -23,7 +24,6 @@ namespace E_Shop
         public void OnInitialized(IContainerProvider containerProvider)
         {
             _regionManager.RegisterViewWithRegion(RegionNames.WindowRegion.ToString(), typeof(LoginView));
-            _regionManager.RegisterViewWithRegion(RegionNames.HeaderRegion.ToString(), typeof(HeaderView));
             _regionManager.RegisterViewWithRegion(RegionNames.ContentRegion.ToString(), typeof(CatalogView));
         }
 
@@ -64,6 +64,7 @@ namespace E_Shop
             containerRegistry.RegisterSingleton<IUserService, UserService>();
             containerRegistry.RegisterSingleton<IProductService, ProductService>();
             containerRegistry.RegisterSingleton<ICartService, CartService>();
+            containerRegistry.RegisterSingleton<IStringsResourceService, StringsResourceService>();
 
             #endregion
         }

@@ -3,7 +3,7 @@ using Prism.Mvvm;
 using Prism.Services.Dialogs;
 using System;
 
-namespace E_Shop.Dialogs
+namespace E_Shop.Dialogs.ViewModels
 {
     public class MessageDialogViewModel : BindableBase, IDialogAware
     {

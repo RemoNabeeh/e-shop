@@ -1,6 +1,6 @@
 ﻿using Prism.Mvvm;
 
-namespace E_Shop.Models
+namespace E_Shop.Core.Models
 {
     public class FilterModel : BindableBase
     {

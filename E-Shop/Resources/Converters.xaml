@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:E_Shop.Resources" 
+                    xmlns:converters="clr-namespace:E_Shop.Converters">
+
+    <converters:BooleanToVisibilityConverter x:Key="BoolToVisConverter"></converters:BooleanToVisibilityConverter>
+    <converters:BooleanToVisabilityNegativeConverter x:Key="BoolToVisNegConverter"></converters:BooleanToVisabilityNegativeConverter>
+    <converters:BooleanToStockStatusConverter x:Key="BoolToStockConverter"></converters:BooleanToStockStatusConverter>
+    <converters:BooleanToStockStatusColorConverter x:Key="BoolToStockColorConverter"></converters:BooleanToStockStatusColorConverter>
+    <converters:IntegerToVisibilityConverter x:Key="IntToVisConverter"></converters:IntegerToVisibilityConverter>
+    
+</ResourceDictionary>

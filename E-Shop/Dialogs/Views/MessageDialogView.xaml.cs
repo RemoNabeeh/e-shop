@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace E_Shop.Dialogs
+namespace E_Shop.Dialogs.Views
 {
     /// <summary>
     /// Interaction logic for MessageDialogView.xaml

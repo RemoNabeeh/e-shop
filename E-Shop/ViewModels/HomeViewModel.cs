@@ -1,4 +1,7 @@
-﻿using E_Shop.Enums;
+﻿using E_Shop.Core.Enums;
+using E_Shop.Core.Models;
+using E_Shop.Enums;
+using E_Shop.Events;
 using E_Shop.Views;
 using Prism.Commands;
 using Prism.Events;
@@ -28,6 +31,13 @@ namespace E_Shop.ViewModels
 
         #region [Commands]
 
+        private bool _showFilterMenuItem = false;
+        public bool ShowFilterMenuItem
+        {
+            get { return _showFilterMenuItem; }
+            set { SetProperty(ref _showFilterMenuItem, value); }
+        }
+
         public DelegateCommand<string> NavigateToCommand { get; private set; }
 
         #endregion
@@ -40,6 +50,8 @@ namespace E_Shop.ViewModels
             _eventAggregator = eventAggregator;
 
             NavigateToCommand = new DelegateCommand<string>(NavigateTo);
+
+            SubscribeToEvents();
         }
 
         #endregion
@@ -84,6 +96,31 @@ namespace E_Shop.ViewModels
                     break;
                 case "Logout":
                     _regionManager.RequestNavigate(RegionNames.WindowRegion.ToString(), nameof(LoginView));
+                    break;
+            }
+        }
+
+        private void SubscribeToEvents()
+        {
+            var updateCartEvent = _eventAggregator.GetEvent<UpdateUserCartEvent>();
+            updateCartEvent.Subscribe(UpdateUserCart);
+
+            var filterMenuEvent = _eventAggregator.GetEvent<ShowFilterMenuItemEvent>();
+            filterMenuEvent.Subscribe((res) => ShowFilterMenuItem = res);
+        }
+
+        private void UpdateUserCart(CartItemEventModel model)
+        {
+            switch (model.Action)
+            {
+                case CartAction.Add:
+                    CartItemsCount += model.Quantity;
+                    break;
+                case CartAction.Remove:
+                    CartItemsCount -= model.Quantity;
+                    break;
+                case CartAction.Submit:
+                    CartItemsCount = 0;
                     break;
             }
         }

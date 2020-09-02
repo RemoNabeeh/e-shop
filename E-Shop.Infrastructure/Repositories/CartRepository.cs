@@ -1,6 +1,4 @@
-﻿using E_Shop.Core.Entities;
-using E_Shop.Core.Interfaces.Repositories;
-using E_Shop.Infrastructure.Helpers;
+﻿using E_Shop.Core.Interfaces.Repositories;
 using System.Collections.Generic;
 
 namespace E_Shop.Infrastructure.Repositories

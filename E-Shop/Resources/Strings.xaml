@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:E_Shop.Resources"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="ApplicationTitle">eShop Application</system:String>
+
+    <system:String x:Key="LoginDialogTitle">Login</system:String>
+    <system:String x:Key="CartDialogTitle">User Cart</system:String>
+    <system:String x:Key="FilterDialogTitle">Catalog Filter</system:String>
+
+    <system:String x:Key="CartUpdated">Cart Updated Successfully</system:String>
+    <system:String x:Key="OrderSubmitted">Order Submitted Successfully</system:String>
+    <system:String x:Key="UserNotFound">User Not Found</system:String>
+    <system:String x:Key="InvalidUsername" xml:space="preserve">Invalid username.&#13;Username must not contain spaces or special characters</system:String>
+    <system:String x:Key="CartIsEmpty">Cart Is Empty</system:String>
+</ResourceDictionary>
